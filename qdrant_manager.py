@@ -62,16 +62,12 @@ class QdrantManager:
             # Lọc kết quả dựa trên từ khóa
             found_results = [result for result in results if keyword.lower() in result.payload['text'].lower()]
 
-            # Kiểm tra kết quả tìm kiếm
-            if not found_results:
-                print(f"Không tìm thấy kết quả nào với từ khóa: '{keyword}'")
-            else:
-                print(f"Kết quả tìm kiếm cho từ khóa '{keyword}':")
-                for result in found_results:
-                    print(f"ID: {result.id}, Văn bản: {result.payload['text']}")
+            # Trả về danh sách kết quả thay vì in trực tiếp
+            return found_results  # Trả về danh sách tìm thấy
 
         except Exception as e:
             print(f"Đã xảy ra lỗi trong quá trình tìm kiếm theo từ khóa: {e}")
+            return []  # Trả về danh sách rỗng nếu có lỗi
 
     def query_similar_texts(self, query_vector):
         try:
@@ -82,16 +78,12 @@ class QdrantManager:
                 limit=5
             )
 
-            # Kiểm tra xem có kết quả hay không
-            if not results:
-                print("Không tìm thấy văn bản tương tự.")
-            else:
-                print("Kết quả tìm kiếm văn bản tương tự:")
-                for result in results:
-                    print(f"Văn bản tương tự: {result.payload['text']}, Độ tương đồng: {result.score}")
+            # Trả về danh sách các kết quả
+            return results  # Trả về danh sách các kết quả
 
         except Exception as e:
             print(f"Đã xảy ra lỗi trong quá trình tìm kiếm văn bản tương tự: {e}")
+            return []  # Trả về danh sách rỗng nếu có lỗi
 
 
     def view_collection(self):
