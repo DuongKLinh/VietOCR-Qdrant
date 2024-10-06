@@ -1,0 +1,5 @@
+vietocr
+pillow
+matplotlib
+qdrant-client
+torch torchvision torchaudio
