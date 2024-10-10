@@ -2,6 +2,7 @@ vietocr
 pillow
 matplotlib
 qdrant-client
-torch torchvision torchaudio
-
-# Cần tải Docker rồi chạy lệnh "docker run -p 6333:6333 qdrant/qdrant" trước khi chạy chương trình và giữ tab đó mở trong khi chạy chương trình
+torch
+torchvision
+torchaudio
+tkinter
